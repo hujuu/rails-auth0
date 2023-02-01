@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+    image: myapp-rails
+    platform: linux/amd64
+    
+  nginx:
+    build:
+      context: ./nginx
+    image: myapp-nginx
+    platform: linux/amd64

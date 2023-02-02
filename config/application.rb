@@ -37,5 +37,6 @@ module RailsAuth0
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.auth0 = config_for(:auth0)
   end
 end

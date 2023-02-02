@@ -11,28 +11,8 @@ services:
       - '3000:3000'
     volumes:
       - .:/myapp #任意のアプリ名
-    depends_on:
-      - db
-    links:
-      - db
     environment:
       RAILS_ENV: development
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_HOST: db
-
-  db:
-    platform: linux/x86_64 #M1チップ対応のため追記
-    restart: always
-    image: mysql:8
-    platform: linux/amd64
-    ports:
-      - 3306:3306
-    volumes:
-      - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      TZ: Asia/Tokyo
 
   nginx:
     build:
@@ -43,6 +23,3 @@ services:
     restart: always #明示的にstopさせるまでリスタートする。（失敗するたび遅延あり）
     depends_on:
       - web 
-
-volumes:
-  mysql-data:
